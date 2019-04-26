@@ -18,7 +18,6 @@ const $page = new pageModule({
       .findNameSpace($namespace)
       .then(this.setSheet.bind(this))
 
-
   },
 
   getSheet() {
@@ -44,13 +43,13 @@ const $page = new pageModule({
 
   setSheet(arg) {
     const sheetData = []
-    console.log(arg)
+    // console.log(arg[0].data.songlist.slice(0, 6))
     arg.forEach((res, key) => {
       sheetData.push(Object.assign({
-        songs: res.data.songs
+        songs: res.data.songlist.slice(0, 6)
       }, sheet[key]))
     })
-    // console.log(sheetData)
+    console.log(sheetData)
     this.setData({ sheets: sheetData })
   }
 })

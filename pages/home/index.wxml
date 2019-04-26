@@ -41,15 +41,15 @@
 
   <!-- 音乐类型 -->
   <view class='home-menu'>
-    <view class='hmenu-item' wx:for='{{sheets}}' wx:for-item="sheet">
+    <view class='hmenu-item' wx:for='{{sheets}}' wx:key='id' wx:for-item="sheet">
       <navigator url='{{common.deSheetUrl(sheet)}}' class="hmenu-head" hover-class='none'>
         <image src='/images/icon/enum.png'></image>
         <text>{{sheet.name}}</text>
       </navigator>
 
-      <!-- <view class='hmenu-body'>
+      <view class='hmenu-body'>
         <template is='song-list' data='{{...sheet}}' />
-      </view> -->
+      </view>
     </view>
   </view>
 </view>
