@@ -1,0 +1,17 @@
+<template name='bottom-player'>
+  <view class='bottom-player'>
+
+    <view class='bplayer-cover'>
+      <image src='/images/1.jpg' mode="widthFix"> </image>
+    </view>
+
+    <view class='bplayer-btn'>
+      <image src="/images/icon/player.png"></image>
+    </view>
+
+    <view class="bplayer-album">
+      <text class="substr">一百万个可能</text>
+      <text>歌手</text>
+    </view>
+  </view>
+</template>

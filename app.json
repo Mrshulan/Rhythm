@@ -1,0 +1,10 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/sheet/list"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#b3d4db"
+  },
+  "sitemapLocation": "sitemap.json"
+}
