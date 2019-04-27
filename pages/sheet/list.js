@@ -1,66 +1,17 @@
-// pages/sheet/list.js
-Page({
+import PageModule from "../../lib/Page.js";
+import { request } from "../../common/const.js";
+import $pageList from "../../model/PageList.js";
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
+const $page = new PageModule($pageList)
 
-  },
+$page.addEvent('onLoad', function (sheet) {
+  this.data.url = request.topid + sheet.id
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  wx.setNavigationBarTitle({
+    title: sheet.name,
+  })
 
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+  this.loadPage()
 })
+
+$page.start();
