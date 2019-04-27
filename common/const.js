@@ -19,7 +19,7 @@ export const sheet = [
 //请求url
 export const request = {
   //服务器主机
-  host: "http://api.atoz.ink/"
+  host: "http://127.0.0.1/"
 };
 request.topid = request.host + "topid/";//歌单
 request.query = request.host + "query/";//搜索

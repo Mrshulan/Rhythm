@@ -25,7 +25,7 @@ const $page = new pageModule({
 
     sheet.forEach(item => {
       const p = new Promise((resolve) => {
-        const url = 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg?uin=0&topid=' + item.id
+        const url = request.topid + item.id
         wx.request({
           url: url,
           success: resolve
@@ -46,7 +46,7 @@ const $page = new pageModule({
     // console.log(arg[0].data.songlist.slice(0, 6))
     arg.forEach((res, key) => {
       sheetData.push(Object.assign({
-        songs: res.data.songlist.slice(0, 6)
+        songs: res.data.songs
       }, sheet[key]))
     })
     console.log(sheetData)

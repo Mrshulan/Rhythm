@@ -1,12 +1,12 @@
 <template name='song-list'>
   <view class='song-list song-view3'>
-    <template is='song-view' wx:for='{{songs}}' wx:for-item="song" wx:key='song.data.albummid' data="{{song}}" />
+    <template is='song-view' wx:for='{{songs}}' wx:key='song_mid' wx:for-item="song"  data="{{song}}" />
   </view>
 </template>
 
 <template name='song-view'>
   <view class='song'>
-    <image src='https://y.gtimg.cn/music/photo_new/T002R90x90M000{{song.data.albummid}}.jpg' mode="widthFix"></image>
-    <text>{{song.data.songname}}</text>
+    <image src='{{song.album_min}}' mode="widthFix"></image>
+    <text>{{song.song_name}}</text>
   </view>
 </template>
