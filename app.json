@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/player/index",
     "pages/home/index",
     "pages/search/index",
     "pages/search/list",
-    "pages/sheet/list"
+    "pages/sheet/list",
+    "pages/player/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#b3d4db"

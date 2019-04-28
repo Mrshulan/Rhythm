@@ -1,5 +1,7 @@
 import PageModule from "../../lib/Page.js";
 import SearchSong from "../../model/SearchSong.js";
+import $pagemusic from "../../model/PageMusic.js";
+
 
 const $search_song = new SearchSong()
 
@@ -48,5 +50,7 @@ const $page = new PageModule({
     })
   }
 })
+
+$page.extend($pagemusic);
 
 $page.start();

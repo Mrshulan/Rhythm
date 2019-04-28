@@ -19,4 +19,4 @@
 
 
 <!-- 底部播放器 -->
-<template is="bottom-player"/>
+<template is="bottom-player" data="{{...playerSong}}"/>
