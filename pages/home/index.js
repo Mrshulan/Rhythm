@@ -1,6 +1,8 @@
 import pageModule from '../../lib/Page.js'
 import Banner from '../../model/Banner.js'
 import { region, sheet, request } from '../../common/const.js'
+import $pagemusic from "../../model/PageMusic.js";
+
 
 const $namespace = 'home/index'
 
@@ -53,6 +55,9 @@ const $page = new pageModule({
     this.setData({ sheets: sheetData })
   }
 })
+
+//继承公共的音乐模块
+$page.extend($pagemusic);
 
 //调用page
 $page.start();

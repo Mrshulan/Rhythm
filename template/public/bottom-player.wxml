@@ -2,7 +2,7 @@
   <view class='bottom-player'>
 
     <view class='bplayer-cover'>
-      <image src='/images/1.jpg' mode="widthFix"> </image>
+      <image src="{{album_min || '/images/default_album.jpg'}}" mode="widthFix"> </image>
     </view>
 
     <view class='bplayer-btn'>
@@ -10,8 +10,8 @@
     </view>
 
     <view class="bplayer-album">
-      <text class="substr">一百万个可能</text>
-      <text>歌手</text>
+      <text class="substr">{{song_name || '暂无歌曲播放'}}</text>
+      <text>{{song_orig || '未知歌手'}}</text>
     </view>
   </view>
 </template>

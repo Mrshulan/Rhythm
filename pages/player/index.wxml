@@ -1,0 +1,53 @@
+
+<view class='container'>
+
+  <!-- 背景图 -->
+  <image class='player-bg' src='{{playerSong.album_big}}'></image>
+  <!-- 歌曲切换视图 -->
+  <view class='player-tab'>
+    <swiper class='player-swiper'>
+      <swiper-item>
+        <image src="{{playerSong.album_big}}"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 底部菜单 -->
+  <view class='player-bottom'>
+    <view class='player-menu'>
+      <image src="/images/icon/like-empty.png"></image>
+      <image src="/images/icon/download.png"></image>
+      <image src="/images/icon/wechar.png"></image>
+      <image bindtap="showPsong" src="/images/icon/more.png"></image>
+    </view>
+
+    <view class='player-slider'>
+      <text>0:01</text>
+      <slider selected-color="#b3d4db" block-size="12" step="1" />
+      <text>5:31</text>
+    </view>
+
+    <view class="player-menu player-btn">
+      <image src="/images/icon/prev.png"></image>
+      <image src="/images/icon/player.png"></image>
+      <image src="/images/icon/next.png"></image>
+    </view>
+  </view>
+
+  <!-- 呼出菜单 -->
+  <view class="psong-view {{psongstatu && 'on'}}">
+    <view class='psong-header'>
+      正在播放
+      <image bindtap="showPsong" src="/images/icon/close-1.png"></image>
+    </view>
+
+    <view class='psong-list'>
+      <view class='psong-item'>
+        <view class='substr'>
+          真相
+          <text>-张杰</text>
+        </view>
+        <image src="/images/icon/close.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

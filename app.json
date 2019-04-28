@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/player/index",
     "pages/home/index",
     "pages/search/index",
     "pages/search/list",
@@ -8,5 +9,8 @@
   "window": {
     "navigationBarBackgroundColor": "#b3d4db"
   },
+  "requiredBackgroundModes": [
+    "audio"
+  ],
   "sitemapLocation": "sitemap.json"
 }

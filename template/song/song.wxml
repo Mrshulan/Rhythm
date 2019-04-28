@@ -1,12 +1,12 @@
 <template name='song-list'>
-  <view class='song-list song-view3'>
+  <view class='song-list song-view3' bindtap="onPlayer" data-songs="{{songs}}">
     <template is='song-view' wx:for='{{songs}}' wx:key='song_mid' wx:for-item="song"  data="{{song}}" />
   </view>
 </template>
 
 <template name='song-view'>
-  <view class='song'>
-    <image src='{{song.album_min}}' mode="widthFix"></image>
-    <text>{{song.song_name}}</text>
+  <view class='song' data-song="{{song}}">
+    <image data-song="{{song}}" src='{{song.album_min}}' mode="widthFix"></image>
+    <text data-song="{{song}}">{{song.song_name}}</text>
   </view>
 </template>
