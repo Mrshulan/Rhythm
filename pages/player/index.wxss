@@ -1,9 +1,20 @@
 /* pages/player/index.wxss */
-/* pages/player/index.wxss */
+
+/* 歌曲旋转动画 */
+@keyframes rotate{
+  to{
+    transform: rotate(360deg);
+  }
+  from{
+    transform: rotate(0deg);
+  }
+}
+
 .container{
   position: relative;
   height: 100vh;
   overflow: hidden;
+  background: rgba(0, 0, 0, .2);
 }
 .player-bg{
   position: absolute;
@@ -11,30 +22,52 @@
   width: 100vw;
   height: 100vh;
   filter: blur(30px);
-  background: rgba(0, 0, 0, .5);
 }
 
 .player-tab{
-  display: flex;
-  align-items: center;
   height: calc(100vh - 120px);
+}
+.player-swiper{
+  height: 100%;
+}
+.player-cover{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   background: radial-gradient(
     rgba(255,255,255, .3) ,
     rgba(255,255,255, .3) 260rpx,
       transparent 261rpx
   ) no-repeat center center / 520rpx 520rpx;
 }
-.player-swiper{
-  flex: 1;
-  height: 500rpx;
-  
-}
-.player-swiper image{
+.player-cover image{
   display: block;
   margin: auto;
   width: 500rpx;
   height: 500rpx;
   border-radius: 1000px;
+}
+.player-cover image.play{
+  animation: rotate 10s infinite linear;
+}
+.player-cover image.paused{
+  animation-play-state: paused;
+}
+.player-lyric{
+  height: 100%;
+  padding-top: 50rpx;
+  box-sizing: border-box;
+  text-align: center;
+  color: #ccc;
+}
+.player-lyric swiper{
+  height: 100%;
+}
+.player-lyric swiper .on{
+  color: #fff;
+  text-shadow: 0 0 1px #fff,
+                0 0 3px #fff;
 }
 
 /* 底部菜单 */

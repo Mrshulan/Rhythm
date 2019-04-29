@@ -3,9 +3,10 @@ import Banner from '../../model/Banner.js'
 import { region, sheet, request } from '../../common/const.js'
 import $pagemusic from "../../model/PageMusic.js";
 
-
+// 页面的命名空间
 const $namespace = 'home/index'
 
+// 实例page模型
 const $page = new pageModule({
   onLoad(o) {
     // 加载banner图信息
@@ -21,10 +22,10 @@ const $page = new pageModule({
       .then(this.setSheet.bind(this))
 
   },
-
+  // 获取歌单信息
   getSheet() {
     const sheetPromise = []
-
+    // 循环歌单请求
     sheet.forEach(item => {
       const p = new Promise((resolve) => {
         const url = request.topid + item.id
@@ -42,7 +43,7 @@ const $page = new pageModule({
       data: Promise.all(sheetPromise)
     }
   },
-
+  // 设置歌单信息
   setSheet(arg) {
     const sheetData = []
     // console.log(arg[0].data.songlist.slice(0, 6))

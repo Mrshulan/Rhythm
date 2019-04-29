@@ -6,6 +6,17 @@ function deSheetUrl(sheet) {
   return "/pages/sheet/list?id=" + sheet.id + "&name=" + sheet.name;
 }
 
+function toSongTime(n) {
+  n = n || 0
+
+  return ~~(n / 60) + ':' + (function (s) {
+    s = Math.ceil(s)
+
+    return s <= 9 ? '0'+s : s
+  }(n % 60))
+}
+
 module.exports = {
-  deSheetUrl: deSheetUrl
+  deSheetUrl: deSheetUrl,
+  toSongTime: toSongTime
 }

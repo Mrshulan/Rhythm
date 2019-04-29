@@ -1,17 +1,17 @@
 <template name='bottom-player'>
   <view class='bottom-player'>
 
-    <view class='bplayer-cover'>
-      <image src="{{album_min || '/images/default_album.jpg'}}" mode="widthFix"> </image>
-    </view>
+    <navigator url="/pages/player/index?name={{song_name}}&mid={{song_mid}}" hover-class="none" class="bplayer-cover">
+      <image src="{{album_min || '/images/default_album.jpg'}}" mode="widthFix"></image>
+    </navigator>
 
     <view class='bplayer-btn'>
       <image src="/images/icon/player.png"></image>
     </view>
 
-    <view class="bplayer-album">
+    <navigator url="/pages/player/index?name={{song_name}}&mid={{song_mid}}" hover-class="none" class="bplayer-album">
       <text class="substr">{{song_name || '暂无歌曲播放'}}</text>
       <text>{{song_orig || '未知歌手'}}</text>
-    </view>
+    </navigator>
   </view>
 </template>
