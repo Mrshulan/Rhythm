@@ -36,23 +36,19 @@ const $page = new pageModule({
         fail: reject
       })
     }).then(res => {
-      const lyrics = res.data.lyric
-
-      if(lyrics.length === 0) {
-        lyrics.push({
+      let lyrics = res.data.lyric
+      if (lyrics === undefined) {
+        lyrics = [{
           milisecond: 0,
           second: 0,
-          date: "00:00.00",
+          date: "00:00.00", 
           text: "暂时无歌词"
-        })
-      }
-
-      if(lyrics.length === 1) {
-        this.setData({multiple: 1})
+        }]
+      } else if (lyrics.length === 1) {
+        this.setData({ multiple: 1 })      
       } else {
-        this.setData({multiple: 8})
+        this.setData({ multiple: 8 })
       }
-      // console.log(lyrics)
       this.setData({lyrics})
     })
   },
@@ -67,7 +63,6 @@ const $page = new pageModule({
     if(!this.data.lyrics || !this.data.lyrics.length) {
       return false
     }
-    // console.log(1)
     let currentTime = ~~(audio.currentTime * 1000)
     let currentIndex = this.data.lyrics.findIndex(item => item.millisecond > currentTime)
 
@@ -88,7 +83,11 @@ const $page = new pageModule({
   
   //每次切换歌曲都会触发准备就绪的回调函数
   onCanplay() {
-    console.log('in')
+    //设置导航标题
+    wx.setNavigationBarTitle({
+      title: this.data.playerSong.song_name
+    });
+    // 重新获取歌词
     this.getLyrics(this.data.playerSong.song_mid)
   }
 })

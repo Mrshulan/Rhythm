@@ -30,7 +30,7 @@ const $page = new PageModule({
   musicTap(event) {
     //需要触发的方法
     const method = event.target.dataset.method
-    // songTab play 这些
+    // AudioManager的static方法 songTab play 这些
     Reflect.has(AudioManager, method) && Reflect.apply(AudioManager[method], this, [event])
   },
 
@@ -56,6 +56,7 @@ const $page = new PageModule({
         Reflect.has(this, e) && Reflect.apply(this[e], this, arg)
       }])
     }
+    console.log(1)
     // 遍历这些事件 传入一个回调函数
     audioEvents.forEach(trigger)
     // 获取歌曲信息

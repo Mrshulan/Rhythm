@@ -76,7 +76,7 @@
     </view>
 
     <view class='psong-list'>
-      <view class='psong-item'  wx:for="{{playerSongs}}">
+      <view class='psong-item'  wx:for="{{playerSongs}}" wx:key='song_mid'>
         <view class='substr' data-song="{{item}}">
           {{item.song_name}}
           <text data-song="{{item}}">- {{item.song_orig}}</text>
