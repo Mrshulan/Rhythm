@@ -52,12 +52,12 @@ const $page = new PageModule({
     const audioEvents = ["onCanplay", "onWaiting", "onError", "onPlay", "onPause", "onSeeking", "onSeeked", "onEnded", "onStop", "onTimeUpdate", "onNext", "onPrev"];
     // 事件代理触发函数
     const trigger = e => {
+      // this指向page实例
       Reflect.apply(audio[e], this, [(...arg) => {
         Reflect.has(this, e) && Reflect.apply(this[e], this, arg)
       }])
     }
-    console.log(1)
-    // 遍历这些事件 传入一个回调函数
+    // 遍历这些事件 onCanplay 传入监听函数
     audioEvents.forEach(trigger)
     // 获取歌曲信息
     const data = AudioManager.getSong()

@@ -83,10 +83,7 @@ const $page = new pageModule({
   
   //每次切换歌曲都会触发准备就绪的回调函数
   onCanplay() {
-    //设置导航标题
-    wx.setNavigationBarTitle({
-      title: this.data.playerSong.song_name
-    });
+    console.log('一定要播放才会监听')
     // 重新获取歌词
     this.getLyrics(this.data.playerSong.song_mid)
   }
