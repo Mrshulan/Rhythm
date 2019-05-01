@@ -3,32 +3,32 @@
 
   <view class='chat-head'>
     <view class='chat-song'>
-      <image src="/images/default_album.jpg"></image>
+      <image src="{{song.album_min}}"></image>
       <view class='chat-songs-des'>
-        <text class='substr'>这里是歌名</text>
-        <text>歌手</text>
+        <text class='substr'>{{song.song_name}}</text>
+        <text> - {{song.song_orig}}</text>
       </view>
     </view>
   </view>
 
-  <view class='chat-body'>
-    <view class='chat-item' wx:for="0000000">
+  <scroll-view class='chat-body' scroll-y bindscrolltolower="moreComments">
+    <view class='chat-item' wx:for="{{commentList}}" wx:key='content'>
       <view class='user-inline'>
-        <image src="/images/default_album.jpg"></image>
+        <image src="{{item.userInfo.avatarUrl}}"></image>
         <view class='user-des'>
-          <text>用户名</text>
-          <text>评论时间</text>
+          <text>{{item.userInfo.nickName}}</text>
+          <text>{{item.time}}</text>
         </view>
       </view>
       <view class='chat-info'>
-        这里是评论满满的都是评论
+        {{item.content}}
       </view>      
     </view>
-  </view>
+  </scroll-view>
 
-  <form class="chat-form">
+  <form class="chat-form" bindsubmit='addComment'>
     <button form-type='submit'>发送</button>
-    <input />
+    <input name="content" value="{{content}}" />
   </form>
 
 </view>

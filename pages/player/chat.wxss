@@ -1,5 +1,4 @@
 /* pages/player/chat.wxss */
-/* pages/player/chat.wxss */
 .container{}
 .chat-head{
   padding: 10px;
@@ -27,9 +26,12 @@
   font-size: 14px;
   color: #aeaeae;
 }
-
+.chat-body{
+  height: calc(100vh - 161px);
+  overflow: hidden;
+}
 .chat-list{
-  padding: 10px 0 40px 0;
+  padding: 10px 0;
 }
 .chat-item{
   padding: 5px 0 10px 10px;

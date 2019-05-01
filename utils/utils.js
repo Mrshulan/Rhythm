@@ -1,7 +1,7 @@
 import Storage from '../lib/Storage.js'
 // 对象转url参数
 function objDeUCode(obj) {
-  return Object.keys(obj).map(item => item + '=' + obj[item]).join('&')
+  return Object.keys(obj).map(item => item + '=' + encodeURIComponent(obj[item])).join('&')
 }
 
 function getUserInfo() {

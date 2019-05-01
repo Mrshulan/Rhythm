@@ -44,7 +44,7 @@
     <view class='player-menu'  bindtap="musicTap">
       <image src="/images/icon/{{like ? 'like' : 'like-empty'}}.png" data-method="like"></image>
       <image src="/images/icon/download.png" data-method="download" ></image>
-      <image src="/images/icon/wechar.png" data-method="wechar"></image>
+      <image src="/images/icon/wechar.png" data-method="chat"></image>
       <image catchtap="showPsong" src="/images/icon/more.png"></image>
     </view>
 

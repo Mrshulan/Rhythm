@@ -24,3 +24,11 @@ export const request = {
 request.topid = request.host + "topid/";//歌单
 request.query = request.host + "query/";//搜索
 request.lyrics = request.host + "lyrics/";//歌词
+
+//云开发
+export const envStr = "music-comments-9369p";
+export const envObj = {
+  database: envStr,
+  storage: envStr,
+  functions: envStr
+};
