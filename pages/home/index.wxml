@@ -13,7 +13,7 @@
   <!-- 头部 -->
   <view class='header'>
     <navigator class='on' hover-class="on">推荐</navigator>
-    <navigator hover-class='on'>歌单</navigator>
+    <navigator url="/pages/like/index" hover-class='on'>歌单</navigator>
     <navigator url="/pages/search/index" hover-class='on'>搜索</navigator>
   </view>
   <!-- banner -->

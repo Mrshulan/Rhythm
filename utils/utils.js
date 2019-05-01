@@ -3,6 +3,40 @@ import Storage from '../lib/Storage.js'
 function objDeUCode(obj) {
   return Object.keys(obj).map(item => item + '=' + obj[item]).join('&')
 }
+
+function getUserInfo() {
+  const $app = getApp().example
+
+  return new Promise((resolve, reject) => {
+    let userInfo = $app.data('userInfo')
+
+    if(userInfo) {
+      return resolve(userInfo)
+    }
+
+    const $user_db = new Storage('user_db')
+
+    userInfo = $user_db.where('time', '!=', '').find()
+
+    if(userInfo) {
+      $app.data(userInfo) 
+      return resolve(userInfo)
+    }
+
+    wx.getUserInfo({
+      success(res) {
+        console.log(res)
+        resolve(res.userInfo)
+      },
+      fail() {
+        wx.redirectTo({
+          url: '/pages/start/index',
+        })
+      }
+    })
+  })
+}
+
 // 发送一个http的get请求
 function httpGet(url, uData) {
   const db = new Storage('http_get')
@@ -35,5 +69,6 @@ function httpGet(url, uData) {
 
 export default {
   httpGet,
-  objDeUCode
+  objDeUCode,
+  getUserInfo
 }

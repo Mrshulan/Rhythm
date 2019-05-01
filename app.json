@@ -4,7 +4,11 @@
     "pages/search/index",
     "pages/search/list",
     "pages/sheet/list",
-    "pages/player/index"
+    "pages/player/index",
+    "pages/player/chat",
+    "pages/like/index",
+    "pages/start/index"
+  
   ],
   "window": {
     "navigationBarBackgroundColor": "#b3d4db"

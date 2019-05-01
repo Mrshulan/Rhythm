@@ -1,0 +1,34 @@
+<!--pages/player/chat.wxml-->
+<view class='container'>
+
+  <view class='chat-head'>
+    <view class='chat-song'>
+      <image src="/images/default_album.jpg"></image>
+      <view class='chat-songs-des'>
+        <text class='substr'>这里是歌名</text>
+        <text>歌手</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='chat-body'>
+    <view class='chat-item' wx:for="0000000">
+      <view class='user-inline'>
+        <image src="/images/default_album.jpg"></image>
+        <view class='user-des'>
+          <text>用户名</text>
+          <text>评论时间</text>
+        </view>
+      </view>
+      <view class='chat-info'>
+        这里是评论满满的都是评论
+      </view>      
+    </view>
+  </view>
+
+  <form class="chat-form">
+    <button form-type='submit'>发送</button>
+    <input />
+  </form>
+
+</view>
