@@ -8,10 +8,12 @@
     "pages/player/chat",
     "pages/like/index",
     "pages/start/index"
-  
   ],
   "window": {
-    "navigationBarBackgroundColor": "#b3d4db"
+    "navigationBarTitleText": "Rhythm Station",
+    "navigationBarBackgroundColor": "#b3d4db",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "light"
   },
   "requiredBackgroundModes": [
     "audio"

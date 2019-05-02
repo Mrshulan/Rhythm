@@ -16,10 +16,23 @@ const $page = new PageModule({
     })
 
     const list = $like_db.order('time', 'desc').all()
-    console.log(list)
+    // console.log(list)
     const cover = list[0] ? list[0].album_big : default_ablum;
 
     this.setData({ list, cover })
+  },
+
+  //回到页面更新数据
+  onShow() {
+
+    //数据列表
+    const list = $like_db.order("time", "desc").all();
+
+    //封面
+    const cover = list[0] ? list[0].album_big : default_album;
+
+    //显示列表以及封面
+    this.setData({ list, cover });
   },
 
   coverError() {

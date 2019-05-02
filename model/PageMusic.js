@@ -69,7 +69,7 @@ const $page = new PageModule({
     const updata = {
       duration: audio.duration,
       currentTime: audio.currentTime,
-      pause: audio.paused,
+      paused: audio.paused,
       buffered: audio.buffered
     }
 

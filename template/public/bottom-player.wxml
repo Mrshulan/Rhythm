@@ -5,8 +5,8 @@
       <image src="{{album_min || '/images/default_album.jpg'}}" mode="widthFix"></image>
     </navigator>
 
-    <view class='bplayer-btn'>
-      <image src="/images/icon/player.png"></image>
+    <view class='bplayer-btn' bindtap="musicTap">
+      <image src="/images/icon/{{paused === false ? 'stop' : 'player'}}.png" data-method="play"></image>
     </view>
 
     <navigator url="/pages/player/index?name={{song_name}}&mid={{song_mid}}" hover-class="none" class="bplayer-album">

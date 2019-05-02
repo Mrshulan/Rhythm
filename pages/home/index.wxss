@@ -41,10 +41,18 @@
 
 /* 国家地区 */
 .region-type{
+  border-bottom: 1px solid #efefef;
+}
+.region-type .region-type-title{
+  width: 100%;
+  padding: 10px 0px;
+  color: #b3d4db;
+  text-align: center;
+}
+.region-type .region-type-content {
   display: flex;
   justify-content: space-around;
-  padding: 25px 0 10px;
-  border-bottom: 1px solid #efefef;
+  width: 100%;
 }
 .region-type navigator image{
   width: 80rpx;

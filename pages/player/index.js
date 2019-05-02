@@ -1,17 +1,16 @@
 import pageModule from '../../lib/Page.js'
 import $pagemusic from '../../model/PageMusic.js'
 import AudioManager from "../../lib/AudioManager.js"
+import LikeSong from "../../model/LikeSong.js"
 import { request } from "../../common/const.js"
 
 const audio = AudioManager.audio
 
+// 拿到收藏歌单的本地储存
+const $like_db = new LikeSong();
+
 const $page = new pageModule({
-  data: {
-    multiple: 8,
-    duration: 150,
-    current: 0,
-    currentIndex: 0
-  },
+
   // showPsong() {
   //   this.setData({
   //     psongstatu: !this.data.psongstatu
@@ -19,9 +18,22 @@ const $page = new pageModule({
   // }
   // 加载
   onLoad(o) {
+
+    this.setData({
+      multiple: 8,
+      duration: 150,
+      current: 0,
+      currentIndex: 0
+    })
+
     wx.setNavigationBarTitle({
       title: o.name || ''
     })
+
+    //收藏状态
+    this.setData({
+      like: $like_db.has(o.mid)
+    });
 
     this.getLyrics(o.mid)
   },
@@ -83,11 +95,12 @@ const $page = new pageModule({
   
   //每次切换歌曲都会触发准备就绪的回调函数
   onCanplay() {
-    console.log('一定要播放才会监听')
+    // console.log('一定要播放准备就绪才会监听')
     // 重新获取歌词
     this.getLyrics(this.data.playerSong.song_mid)
   }
 })
 
 $page.extend($pagemusic)
+
 $page.start()

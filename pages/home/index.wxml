@@ -13,7 +13,7 @@
   <!-- 头部 -->
   <view class='header'>
     <navigator class='on' hover-class="on">推荐</navigator>
-    <navigator url="/pages/like/index" hover-class='on'>歌单</navigator>
+    <navigator url="/pages/like/index" hover-class='on'>我的</navigator>
     <navigator url="/pages/search/index" hover-class='on'>搜索</navigator>
   </view>
   <!-- banner -->
@@ -33,10 +33,13 @@
 
   <!-- region地区 -->
   <view class='region-type'>
-    <navigator url='{{common.deSheetUrl(regionItem)}}' wx:for='{{region}}' wx:key='id' wx:for-item='regionItem' hover-class="none">
-      <image src='/images/icon/music.png' mode="widthFix"></image>
-      <text>{{regionItem.name}}</text>
-    </navigator>
+    <view class='region-type-title'>猜 你 喜 欢</view>
+    <view class='region-type-content'>   
+      <navigator url='{{common.deSheetUrl(regionItem)}}' wx:for='{{region}}' wx:key='id' wx:for-item='regionItem' hover-class="none">
+        <image src='/images/icon/music.png' mode="widthFix"></image>
+        <text>{{regionItem.name}}</text>
+      </navigator>
+    </view>
   </view>
 
   <!-- 音乐类型 -->
