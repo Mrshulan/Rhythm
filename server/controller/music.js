@@ -2,11 +2,11 @@ const axios = require('../services/axios')
 
 // 小程序基础配置
 const defaultConfig = {
-  defaultApiCacheValidate: 1000 * 60 * 60 * 24,
   qqMusicCommonBaseUrl: 'https://c.y.qq.com',
   qqMusicUrlBaseUrl: 'https://u.y.qq.com',
   qqMusicHtmlUrl: 'https://i.y.qq.com/v8/playsong.html?songmid=004AeIvh4ML0Bz',
-  albumImgUrl: 'https://y.gtimg.cn/music/photo_new/T002R300x300M000 .jpg',
+  albumMinImgUrl: 'https://y.gtimg.cn/music/photo_new/T002R90x90M000 .jpg',
+  albumBigImgUrl: 'https://y.gtimg.cn/music/photo_new/T002R300x300M000 .jpg',
   singerAvatarUrl: 'https://y.gtimg.cn/music/photo_new/T001R150x150M000 .jpg',
   defaultData: {
     g_tk: '5381',
@@ -44,6 +44,52 @@ exports.getLrc = async ctx => {
   }
 }
 
+// 获取排行榜列表 p列表 r每次多少项
+exports.getTopid = async ctx => {
+  const { id, p = 1, r = 6} = ctx.query
+
+  const options = {
+    // url: `${defaultConfig.qqMusicCommonBaseUrl}/v8/fcg-bin/fcg_myqq_toplist.fcg`, 排行榜信息大全
+    url: `${defaultConfig.qqMusicCommonBaseUrl}/v8/fcg-bin/fcg_v8_toplist_cp.fcg`, // 排行榜类别
+    headers: defaultConfig.defaultHeader,
+    params: {
+      topid: id
+    }
+  }
+
+  const { cur_song_num, songlist, topinfo } = await axios(options)
+
+  ctx.body = {
+    statu: 200,
+    msg: "查询成功",
+    count_num: cur_song_num,
+    count_page: Math.ceil(cur_song_num / r),
+    current_page: p,
+    number: r,
+    stock: (p * r) < cur_song_num,
+    songList: songlist.slice((p - 1) * r,p * r).map(item => {
+      const {
+        "songmid":songmid,
+        "songname": songname,
+        "albummid": albummid,
+        "albumname": albumname,
+        "singer": singer
+      } = item.data
+
+      return {
+        songmid,
+        songname,
+        album_min: defaultConfig.albumMinImgUrl.replace(/ /, albummid),
+        album_big: defaultConfig.albumBigImgUrl.replace(/ /, albummid),
+        albummid,
+        albumname,
+        singer: singer[0].name
+      }
+    })
+  }
+}
+
+// 根据songmid获取24小时真实url
 exports.getSongUrl = async ctx => {
   const songId = ctx.params.id
 

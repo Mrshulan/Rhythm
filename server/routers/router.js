@@ -9,6 +9,8 @@ router.get('/', async ctx => {
 
 router.get('/getLrc/:id', Music.getLrc)
 
+router.get('/getTopid', Music.getTopid)
+
 // 获取真实song地址
 router.get('/getSongUrl/:id', Music.getSongUrl)
 
