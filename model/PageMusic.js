@@ -40,20 +40,27 @@ const $page = new PageModule({
     const song = event.target.dataset.song
     const songs= event.currentTarget.dataset.songs
 
-    new Promise(resovle => {
-      wx.request({
-        url: request.songurl + song.songmid,
-        success: function (res) {
-          song.songurl = res.data
-          resovle(song)
-        },
-        fail: function (e) {
-          console.log(song)
-        }
+    if(song) {
+      new Promise(resovle => {
+        wx.request({
+          url: request.songurl + song.songmid,
+          success: function (res) {
+            song.songurl = res.data
+            resovle(song)
+          },
+          fail: function (e) {
+            console.log(song)
+          }
+        })
+      }).then(song => {
+        AudioManager.setSong(song, songs)
       })
-    }).then(song => {
-      AudioManager.setSong(song, songs)
-    })
+    } else {
+      wx.showToast({
+        title: '你还未选择歌曲',
+      })
+    }
+    
   },
 
   onShow() {

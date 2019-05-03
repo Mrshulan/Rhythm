@@ -61,6 +61,7 @@
 }
 .region-type navigator text{
   display: block;
+  color: #b3d4db;
   text-align: center;
 }
 

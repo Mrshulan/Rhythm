@@ -26,17 +26,17 @@
       indicator-active-color="#b3d4db"
     >
       <swiper-item wx:for='{{banner}}' wx:key='atype' wx:for-item='bannerItem' bindtap='actionBanner' data-action='{{bannerItem}}'>
-          <image src="{{bannerItem.img}}"></image>
+          <image src="{{bannerItem.picUrl}}"></image>
       </swiper-item>
     </swiper>
   </view>
 
   <!-- region地区 -->
   <view class='region-type'>
-    <view class='region-type-title'>猜 你 喜 欢</view>
+    <view class='region-type-title'>全 球 好 听</view>
     <view class='region-type-content'>   
       <navigator url='{{common.deSheetUrl(regionItem)}}' wx:for='{{region}}' wx:key='id' wx:for-item='regionItem' hover-class="none">
-        <image src='/images/icon/music.png' mode="widthFix"></image>
+        <image src='{{regionItem.logo}}' mode="widthFix"></image>
         <text>{{regionItem.name}}</text>
       </navigator>
     </view>

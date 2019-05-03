@@ -9,7 +9,7 @@
   bottom: 0;
   padding: 5px 10px;
   background: #fff;
-  /* box-shadow: 0 -1px 1px #eee; */
+  box-shadow: 0 -5px 3px #eee;
 }
 .bplayer-cover{
   margin-right: 8px;
@@ -22,14 +22,20 @@
 }
 .bplayer-album{
   padding-top: 3px;
+  height: 40px;
   overflow: hidden;
 }
-.bplayer-album text{
+.bplayer-album .songname{
   display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .bplayer-album text:last-child{
+  display:inline-block;
   font-size: 10px;
   color: #aeaeae;
+  transform: translateY(-10px);
 }
 .bplayer-btn{
   float: right;

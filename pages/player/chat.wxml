@@ -5,7 +5,7 @@
     <view class='chat-song'>
       <image src="{{song.album_min}}"></image>
       <view class='chat-songs-des'>
-        <text class='substr'>{{song.songname}}</text>
+        <text class='substr'> {{song.songname}}</text>
         <text> - {{song.singer}}</text>
       </view>
     </view>
@@ -24,11 +24,12 @@
         {{item.content}}
       </view>      
     </view>
+    <view class='attention'>当前暂无更多评论~</view>
   </scroll-view>
 
   <form class="chat-form" bindsubmit='addComment'>
-    <button form-type='submit'>发送</button>
-    <input name="content" value="{{content}}" />
+    <button form-type='submit'>评论</button>
+    <input name="content" value="{{content}}" placeholder='留下点什么吧~'/>
   </form>
 
 </view>

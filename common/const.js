@@ -1,10 +1,10 @@
 // 猜你喜欢
 export const region = [
-  { name: "欧美", id: 3 },
-  { name: "内地", id: 5 },
-  { name: "港台", id: 6 },
-  { name: "韩国", id: 16 },
-  { name: "日本", id: 17 }
+  { name: "内地", id: 5, logo: '/images/icon/ZG.png' },
+  { name: "港台", id: 6, logo: '/images/icon/TW.png' },
+  { name: "欧美", id: 3, logo: '/images/icon/OM.png' },
+  { name: "韩国", id: 16, logo: '/images/icon/HG.png' },
+  { name: "日本", id: 17, logo: '/images/icon/RB.png' }
 ];
 
 // 主页推荐歌单
@@ -19,6 +19,7 @@ export const request = {
   host: "http://127.0.0.1:3000/"
 }
 request.songurl = request.host + 'getSongUrl/' // 歌曲真实地址
+request.recommend = request.host + 'getRecommend' // 首页推荐
 request.topid = request.host + "getTopid" // 歌单
 request.search = request.host + "getSearch" // 搜索
 request.lyrics = request.host + "getLrc/" // 歌词

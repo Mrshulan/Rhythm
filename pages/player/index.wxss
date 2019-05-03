@@ -14,7 +14,7 @@
   position: relative;
   height: 100vh;
   overflow: hidden;
-  background: rgba(0, 0, 0, .2);
+  background: rgba(0, 0, 0, .3);
 }
 .player-bg{
   position: absolute;
@@ -76,6 +76,14 @@
   display: flex;
   justify-content: space-around;
   padding: 0 50rpx;
+}
+.player-menu .song-comment{
+  display: flex;
+  justify-content: center;
+}
+.player-menu .song-comment .commentCount {
+  color: #b3d4db;
+  font-size: 12px;
 }
 .player-menu image{
   width: 30px;

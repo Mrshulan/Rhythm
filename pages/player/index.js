@@ -6,6 +6,10 @@ import { request } from "../../common/const.js"
 
 const audio = AudioManager.audio
 
+// 获取云端评论控制权(文档集合型)
+const db = wx.cloud.database()
+const Comments = db.collection('Comments')
+
 // 拿到收藏歌单的本地储存
 const $like_db = new LikeSong();
 
@@ -22,6 +26,23 @@ const $page = new pageModule({
     });
 
     this.getLyrics(o.mid)
+    this.getCommentCount(o.mid)
+  },
+  onShow() {
+    if (this.data.playerSong) {
+      this.getCommentCount(this.data.playerSong.songmid)
+    }
+  },
+  // 获取评论数
+  getCommentCount(mid) {
+    Comments.where({
+      'songmid': mid
+    }).get().then(res => {
+      this.setData({
+        commentCount: res.data.length
+      })
+    })
+
   },
   // 获取歌词
   getLyrics(mid) {
@@ -82,14 +103,16 @@ const $page = new pageModule({
   //每次切换歌曲都会触发准备就绪的回调函数
   onCanplay() {
     // console.log('下一首链接请求成功之后')
-    //设置导航标题
+    // 设置导航标题
     wx.setNavigationBarTitle({
       title: this.data.playerSong.songname
     });
-    //收藏状态
+    // 收藏状态
     this.setData({
       like: $like_db.has(this.data.playerSong.songmid)
     });
+    // 评论个数
+    this.getCommentCount(this.data.playerSong.songmid)
     // 重新获取歌词
     this.getLyrics(this.data.playerSong.songmid)
   }

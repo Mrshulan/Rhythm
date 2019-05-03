@@ -11,8 +11,9 @@ const $page = new pageModule({
   onLoad(o) {
     // 加载banner图信息
     const banner = new Banner(this)
-    banner.getBanner().then(data => {
-      this.setData({ banner: data })    
+    banner.getBanner().then(res => {
+      console.log(res.data)
+      this.setData({ banner: res.data.slider })    
     })
     // 设置国家地区信息
     this.setData({ region })

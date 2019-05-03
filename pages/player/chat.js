@@ -86,8 +86,7 @@ const $page = new PageModule({
       songmid: this.data.song.songmid,
       user: this.data.user
     }
-
-    // console.log(data)
+    
     wx.cloud.callFunction({
       name: 'addComment',
       data: data,

@@ -2,7 +2,7 @@
   <view class='bottom-player'>
 
     <navigator url="/pages/player/index?name={{songname}}&mid={{songmid}}" hover-class="none" class="bplayer-cover">
-      <image src="{{album_min || '/images/default_album.jpg'}}" mode="widthFix"></image>
+      <image src="{{album_min || '/images/default_music.png'}}" mode="widthFix"></image>
     </navigator>
 
     <view class='bplayer-btn' bindtap="musicTap">
@@ -10,8 +10,7 @@
     </view>
 
     <navigator url="/pages/player/index?name={{songname}}&mid={{songmid}}" hover-class="none" class="bplayer-album">
-      <text class="substr">{{songname || '暂无歌曲播放'}}</text>
-      <text>{{singer || '未知歌手'}}</text>
+      <text class="songname">{{songname || '暂无歌曲播放'}}</text><text>{{singer || 'new Object()'}}</text>
     </navigator>
   </view>
 </template>
