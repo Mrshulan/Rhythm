@@ -50,7 +50,7 @@
 
     <view class='player-slider'>
       <text>{{common.toSongTime(playerSong.currentTime)}}</text>
-      <slider 
+      <slider
         selected-color="#b3d4db"
         block-size="12"
         step="1"
@@ -71,15 +71,15 @@
   <!-- 呼出菜单 -->
   <view class="psong-view {{psongshow && 'on'}}">
     <view class='psong-header'>
-      正在播放 （{{playerSongs.length}}）
+      播放列表（{{playerSongs.length}}）
       <image bindtap="showPsong" src="/images/icon/close-1.png"></image>
     </view>
 
     <view class='psong-list'>
       <view class='psong-item'  wx:for="{{playerSongs}}" wx:key='song_mid'>
         <view class='substr' data-song="{{item}}">
-          {{item.song_name}}
-          <text data-song="{{item}}">- {{item.song_orig}}</text>
+          {{item.songname}}
+          <text data-song="{{item}}">- {{item.singer}}</text>
         </view>
         <image 
           catchtap="delPlayerSongs"

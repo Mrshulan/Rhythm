@@ -98,13 +98,13 @@ exports.getTopid = async ctx => {
 
 // 获取搜索界面，接口和getTopid类似
 exports.getSearch = async ctx => {
-  const { w, p = 1, r = 10} = ctx.query
+  const { w, p = 1, r = 18} = ctx.query
 
   const options = {
     url: `${defaultConfig.qqMusicCommonBaseUrl}/soso/fcgi-bin/search_for_qq_cp`,
     headers: defaultConfig.defaultHeader,
     method: 'GET',
-    params: Object.assign({}, defaultConfig.defaultData, { w, p, r })
+    params: Object.assign({}, defaultConfig.defaultData, { w, p, n: r })
   }
 
   const {data: { song: { list, totalnum }}} = await axios(options)

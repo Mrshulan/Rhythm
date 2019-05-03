@@ -15,7 +15,7 @@ exports.main = async (event, context) => {
   console.log(event, context)
 
   const data = {
-    song_mid: event.song_mid,//评论歌曲的id
+    songmid: event.songmid,//评论歌曲的id
     content: event.content,//评论内容
     userInfo: {
       openId: event.userInfo.openId,//用户关联开发者账号的openid

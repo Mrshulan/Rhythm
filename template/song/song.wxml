@@ -7,6 +7,6 @@
 <template name='song-view'>
   <view class='song' data-song="{{song}}">
     <image data-song="{{song}}" src='{{song.album_min}}' mode="widthFix"></image>
-    <text data-song="{{song}}">{{song.song_name}}</text>
+    <text data-song="{{song}}">{{song.songname}}</text>
   </view>
 </template>

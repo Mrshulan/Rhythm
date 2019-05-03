@@ -47,6 +47,7 @@
   width: 100%;
   padding: 10px 0px;
   color: #b3d4db;
+  font-weight: 700;
   text-align: center;
 }
 .region-type .region-type-content {

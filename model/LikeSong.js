@@ -8,11 +8,11 @@ export default class LikeSong extends Storage {
   }
 
   has(mid) {
-    return this.where('song_mid', mid).find() ? true : false;
+    return this.where('songmid', mid).find() ? true : false;
   }
 
   add(song) {
-    const dataKey = ["song_url", "song_mid", "song_name", "song_orig", "album_min", "album_big", "album_mid", "album_name"];
+    const dataKey = ["songurl", "songmid", "songname", "singer", "album_min", "album_big", "albummid", "albumname"];
     const data = {}
 
     dataKey.forEach(key => data[key] = song[key]);
@@ -24,7 +24,7 @@ export default class LikeSong extends Storage {
   }
 
   del(song) {
-    this.where('song_mid', song.song_mid)
+    this.where('songmid', song.song_mid)
     super.del().save()  
   }
 }

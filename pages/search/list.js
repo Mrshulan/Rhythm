@@ -15,7 +15,7 @@ $page.start({
   onLoad(query) {
     const songName = query.q
 
-    this.data.url = request.query + songName;
+    this.data.url = request.search + '?w=' + songName;
 
     wx.setNavigationBarTitle({
       title: songName

@@ -1,5 +1,6 @@
 import PageModule from '../lib/Page.js'
 import AudioManager from '../lib/AudioManager.js'
+import { request } from '../common/const.js'
 
 // 全局背景音频对象
 const audio = AudioManager.audio
@@ -38,14 +39,21 @@ const $page = new PageModule({
   onPlayer(event) {
     const song = event.target.dataset.song
     const songs= event.currentTarget.dataset.songs
-    // console.log(song)
-    if(song) {
+
+    new Promise(resovle => {
+      wx.request({
+        url: request.songurl + song.songmid,
+        success: function (res) {
+          song.songurl = res.data
+          resovle(song)
+        },
+        fail: function (e) {
+          console.log(song)
+        }
+      })
+    }).then(song => {
       AudioManager.setSong(song, songs)
-      // this.setData({
-      //   playerSong: song,
-      //   playerSongs: songs
-      // })
-    }
+    })
   },
 
   onShow() {
@@ -72,7 +80,6 @@ const $page = new PageModule({
       paused: audio.paused,
       buffered: audio.buffered
     }
-
     // 数据合并
     Object.assign(this.data.playerSong, updata)
 
@@ -85,7 +92,7 @@ const $page = new PageModule({
   onError() {
     wx.showToast({
       icon: 'none',
-      title: '歌曲链接发生错误'
+      title: '歌曲链接发生错误,请尝试使用qq音乐客户端播放~'
     })
   },
   // 播放结束,切换下一首

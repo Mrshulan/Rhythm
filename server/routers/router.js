@@ -10,7 +10,7 @@ router.get('/', async ctx => {
 // 获取首页推荐
 router.get('/getRecommend', Music.getRecommend)
 
-// 获取搜索列表 /getSerach？w=songName&p=number(1)&r=number(10)
+// 获取搜索列表 /getSerach？w=songName&p=number(1)&r=number(18)
 router.get('/getSearch', Music.getSearch)
 
 // 获取排行榜列表数据 /getTopid?id=number&p=number(1)&r=number(6)

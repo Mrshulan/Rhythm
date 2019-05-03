@@ -28,7 +28,7 @@ const $page = new pageModule({
     // 循环歌单请求
     sheet.forEach(item => {
       const p = new Promise((resolve) => {
-        const url = request.topid + item.id
+        const url = request.topid + "?id=" + item.id
         wx.request({
           url: url,
           success: resolve
@@ -45,14 +45,15 @@ const $page = new pageModule({
   },
   // 设置歌单信息
   setSheet(arg) {
+    console.log(arg)
     const sheetData = []
-    // console.log(arg[0].data.songlist.slice(0, 6))
+
     arg.forEach((res, key) => {
       sheetData.push(Object.assign({
-        songs: res.data.songs
+        songs: res.data.songList
       }, sheet[key]))
     })
-    console.log(sheetData)
+
     this.setData({ sheets: sheetData })
   }
 })

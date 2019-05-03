@@ -27,6 +27,7 @@ const $page = new PageModule({
 
     //数据列表
     const list = $like_db.order("time", "desc").all();
+    console.log(list)
 
     //封面
     const cover = list[0] ? list[0].album_big : default_album;

@@ -10,22 +10,8 @@ const audio = AudioManager.audio
 const $like_db = new LikeSong();
 
 const $page = new pageModule({
-
-  // showPsong() {
-  //   this.setData({
-  //     psongstatu: !this.data.psongstatu
-  //   })
-  // }
   // 加载
   onLoad(o) {
-
-    this.setData({
-      multiple: 8,
-      duration: 150,
-      current: 0,
-      currentIndex: 0
-    })
-
     wx.setNavigationBarTitle({
       title: o.name || ''
     })
@@ -49,6 +35,7 @@ const $page = new pageModule({
       })
     }).then(res => {
       let lyrics = res.data.lyric
+
       if (lyrics === undefined) {
         lyrics = [{
           milisecond: 0,
@@ -67,7 +54,6 @@ const $page = new pageModule({
   // 设置进度条
   setSeek(event) {
     const time = event.detail.value
-
     AudioManager.trigger('seek', this, time)
   },
   // 进度条更新时间
@@ -95,9 +81,17 @@ const $page = new pageModule({
   
   //每次切换歌曲都会触发准备就绪的回调函数
   onCanplay() {
-    // console.log('一定要播放准备就绪才会监听')
+    // console.log('下一首链接请求成功之后')
+    //设置导航标题
+    wx.setNavigationBarTitle({
+      title: this.data.playerSong.songname
+    });
+    //收藏状态
+    this.setData({
+      like: $like_db.has(this.data.playerSong.songmid)
+    });
     // 重新获取歌词
-    this.getLyrics(this.data.playerSong.song_mid)
+    this.getLyrics(this.data.playerSong.songmid)
   }
 })
 

@@ -5,8 +5,8 @@
     <view class='chat-song'>
       <image src="{{song.album_min}}"></image>
       <view class='chat-songs-des'>
-        <text class='substr'>{{song.song_name}}</text>
-        <text> - {{song.song_orig}}</text>
+        <text class='substr'>{{song.songname}}</text>
+        <text> - {{song.singer}}</text>
       </view>
     </view>
   </view>

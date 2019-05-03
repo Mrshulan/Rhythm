@@ -17,7 +17,7 @@ const $page = new PageModule({
   onLoad(song) {
     // 设置标题
     wx.setNavigationBarTitle({
-      title: `${song.song_name}`
+      title: `${song.songname}`
     })
     // url带过来的data en de反转拿到到的song数据更新到page里边
     this.setData({ song })
@@ -60,7 +60,7 @@ const $page = new PageModule({
 
     // 注意setComments的this指向
     return Comments.where({
-      'song_mid': this.data.song.song_mid
+      'songmid': this.data.song.songmid
     })
     .skip(this.data.page * this.data.row - this.data.row + this.data.currentAddCount)
     .limit(this.data.row)
@@ -83,7 +83,7 @@ const $page = new PageModule({
     // 整合需要发送云端的数据
     const data = { 
       content,
-      song_mid: this.data.song.song_mid,
+      songmid: this.data.song.songmid,
       user: this.data.user
     }
 

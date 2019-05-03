@@ -7,7 +7,7 @@ import $pagemusic from "../../model/PageMusic.js";
 const $page = new PageModule($pageList)
 
 $page.addEvent('onLoad', function (sheet) {
-  this.data.url = request.topid + sheet.id
+  this.data.url = request.topid +"?id=" + sheet.id
 
   wx.setNavigationBarTitle({
     title: sheet.name,

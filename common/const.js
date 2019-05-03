@@ -1,5 +1,4 @@
-
-//国家地区
+// 猜你喜欢
 export const region = [
   { name: "欧美", id: 3 },
   { name: "内地", id: 5 },
@@ -8,24 +7,24 @@ export const region = [
   { name: "日本", id: 17 }
 ];
 
-//推荐歌单
+// 主页推荐歌单
 export const sheet = [
   { name: "热门歌曲", id: 26 },
   { name: "新歌专辑", id: 27 },
   { name: "网络歌曲", id: 28 }
 ];
 
-
-//请求url
+//请求接口
 export const request = {
-  //服务器主机
-  host: "http://127.0.0.1/"
-};
-request.topid = request.host + "topid/";//歌单
-request.query = request.host + "query/";//搜索
-request.lyrics = request.host + "lyrics/";//歌词
+  host: "http://127.0.0.1:3000/"
+}
+request.songurl = request.host + 'getSongUrl/' // 歌曲真实地址
+request.topid = request.host + "getTopid" // 歌单
+request.search = request.host + "getSearch" // 搜索
+request.lyrics = request.host + "getLrc/" // 歌词
 
-//云开发
+
+// 云开发配置
 export const envStr = "music-comments-9369p";
 export const envObj = {
   database: envStr,

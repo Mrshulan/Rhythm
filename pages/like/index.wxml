@@ -21,15 +21,15 @@
 
   <view class='like-body'>
     <view class='like-list-head'>
-      我喜欢的音乐(共{{list.length}})
+      我喜欢的音乐(共{{list.length}}首)
     </view>
 
     <view class='like-list' bindtap='onPlayer' data-songs="{{list}}">
       <view class='like-item' wx:for='{{list}}' wx:key='song_mid'>     
         <text class='item-num'>{{index + 1}}</text>
         <view class='item-song'>
-          <text class='substr' data-song='{{item}}'>{{item.song_name}}</text>
-          <text data-song='{{item}}'>{{item.song_orig}}</text>
+          <text class='substr' data-song='{{item}}'>{{item.songname}}</text>
+          <text data-song='{{item}}'>{{item.singer}}</text>
         </view>
       </view>
     </view>

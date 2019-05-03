@@ -1,7 +1,7 @@
 <template name='bottom-player'>
   <view class='bottom-player'>
 
-    <navigator url="/pages/player/index?name={{song_name}}&mid={{song_mid}}" hover-class="none" class="bplayer-cover">
+    <navigator url="/pages/player/index?name={{songname}}&mid={{songmid}}" hover-class="none" class="bplayer-cover">
       <image src="{{album_min || '/images/default_album.jpg'}}" mode="widthFix"></image>
     </navigator>
 
@@ -9,9 +9,9 @@
       <image src="/images/icon/{{paused === false ? 'stop' : 'player'}}.png" data-method="play"></image>
     </view>
 
-    <navigator url="/pages/player/index?name={{song_name}}&mid={{song_mid}}" hover-class="none" class="bplayer-album">
-      <text class="substr">{{song_name || '暂无歌曲播放'}}</text>
-      <text>{{song_orig || '未知歌手'}}</text>
+    <navigator url="/pages/player/index?name={{songname}}&mid={{songmid}}" hover-class="none" class="bplayer-album">
+      <text class="substr">{{songname || '暂无歌曲播放'}}</text>
+      <text>{{singer || '未知歌手'}}</text>
     </navigator>
   </view>
 </template>
