@@ -1,6 +1,6 @@
 const axios = require('../services/axios')
 
-// 小程序基础配置
+// 小程序默认配置
 const defaultConfig = {
   qqMusicCommonBaseUrl: 'https://c.y.qq.com',
   qqMusicUrlBaseUrl: 'https://u.y.qq.com',
@@ -34,13 +34,21 @@ const defaultConfig = {
   }
 }
 
-exports.getLrc = async ctx => {
-  const data = ctx.query
-  const dataPramas  = ctx.params
+// 获取首页推荐
+exports.getRecommend = async ctx => {
+  const options = {
+    method: 'GET',
+    url: `${defaultConfig.qqMusicCommonBaseUrl}/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg`,
+    headers: defaultConfig.defaultHeader,
+    params: defaultConfig.defaultData
+  }
+
+  const {data: { slider }} = await axios(options)
 
   ctx.body = {
-    data,
-    dataPramas,
+    status: 200,
+    msg: '首页推荐功能暂未开放',
+    slider
   }
 }
 
@@ -52,9 +60,8 @@ exports.getTopid = async ctx => {
     // url: `${defaultConfig.qqMusicCommonBaseUrl}/v8/fcg-bin/fcg_myqq_toplist.fcg`, 排行榜信息大全
     url: `${defaultConfig.qqMusicCommonBaseUrl}/v8/fcg-bin/fcg_v8_toplist_cp.fcg`, // 排行榜类别
     headers: defaultConfig.defaultHeader,
-    params: {
-      topid: id
-    }
+    method: 'GET',
+    params: Object.assign({}, defaultConfig.defaultData, { topid: id })
   }
 
   const { cur_song_num, songlist, topinfo } = await axios(options)
@@ -86,6 +93,109 @@ exports.getTopid = async ctx => {
         singer: singer[0].name
       }
     })
+  }
+}
+
+// 获取搜索界面，接口和getTopid类似
+exports.getSearch = async ctx => {
+  const { w, p = 1, r = 10} = ctx.query
+
+  const options = {
+    url: `${defaultConfig.qqMusicCommonBaseUrl}/soso/fcgi-bin/search_for_qq_cp`,
+    headers: defaultConfig.defaultHeader,
+    method: 'GET',
+    params: Object.assign({}, defaultConfig.defaultData, { w, p, r })
+  }
+
+  const {data: { song: { list, totalnum }}} = await axios(options)
+
+  ctx.body = {
+    statu: 200,
+    msg: "查询成功",
+    count_num: totalnum,
+    count_page: Math.ceil(totalnum / r),
+    current_page: p,
+    number: r,
+    stock: (p * r) < totalnum,
+    songList: list.map(item => {
+      const {
+        "songmid":songmid,
+        "songname": songname,
+        "albummid": albummid,
+        "albumname": albumname,
+        "singer": singer
+      } = item
+
+      return {
+        songmid,
+        songname,
+        album_min: defaultConfig.albumMinImgUrl.replace(/ /, albummid),
+        album_big: defaultConfig.albumBigImgUrl.replace(/ /, albummid),
+        albummid,
+        albumname,
+        singer: singer[0].name
+      }
+    })
+  }
+}
+
+// 获取歌曲歌词列表
+exports.getLrc = async ctx => {
+  const songmid  = ctx.params.id
+
+  const options = {
+      url: `${defaultConfig.qqMusicCommonBaseUrl}/lyric/fcgi-bin/fcg_query_lyric.fcg`,
+      headers: defaultConfig.defaultHeader,
+      params: Object.assign({}, defaultConfig.defaultData, {
+        songmid,
+        nobase64: 1, // 不然默认会以base64编码返回
+        jsonpCallback: 'jsonp'
+      })
+  }
+  // 返回的是jsonp的数据,js函数名为 jsonp
+  const lrcReg = /jsonp\((.*)\)/
+  const result = await axios(options)
+  const lrcContentString = JSON.parse(result.match(lrcReg)[1]).lyric
+
+  // 打包歌词数组
+  try{
+    let lrcContentArray = parseLyric(lrcContentString)
+    ctx.body = {
+      status: 200,
+      msg: '歌词打包成功',
+      lyric: lrcContentArray
+    }
+  } catch(e) {
+    ctx.body = {
+      status: 204,
+      msg: '歌曲暂无歌词',
+      lyric: [{}]
+    }
+  }
+
+  function parseLyric(text) {
+    //先按行分割
+    var lyric = text.split('&#10;'); 
+
+    var lrc = new Array(); 
+    // HtmlEncode有点儿烦躁
+    for(var i=0, iL = lyric.length;i < iL; i++) {
+      var contentArray = lyric[i].match(/\[(.*)\](.*)/);
+      // &#13;处理一些特殊情况,不然有歌词都变成了没有歌词
+      if(/(\d+)&#58;(\d+)&#46;(\d+)/.test(lyric[i])) {
+        // &&  !== '&#13;'
+        var timeArray = contentArray[1].match(/(\d+)&#58;(\d+)&#46;(\d+)/)
+        var millisecond = timeArray[1] * 60000 + timeArray[2] * 1000 + timeArray[3]*10;
+        lrc.push({
+          millisecond,
+          second: Math.round(millisecond/1000),
+          date: contentArray[1].replace(/&#58;/, ':').replace(/&#46;/, '.'),
+          text: contentArray[2].replace(/&#45;/g, '-').replace(/&#32;/g, ' ').replace(/&#13/g, '')
+        })
+      }
+    }
+
+    return lrc;
   }
 }
 
