@@ -1,15 +1,12 @@
-/* pages/player/index.wxss */
-
 /* 歌曲旋转动画 */
 @keyframes rotate{
-  to{
-    transform: rotate(360deg);
-  }
   from{
     transform: rotate(0deg);
   }
+  to{
+    transform: rotate(360deg);
+  }
 }
-
 .container{
   position: relative;
   height: 100vh;

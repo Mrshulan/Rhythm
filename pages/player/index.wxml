@@ -1,10 +1,9 @@
 <wxs src="../../common/function.wxs" module="common" />
 
 <view class='container'>
-
   <!-- 背景图 -->
   <image class='player-bg' src='{{playerSong.album_big}}'></image>
-
+  <!-- 主体 -->
   <view class='player-tab'>
     <swiper class="player-swiper">
       <!-- 歌曲封面 -->
@@ -37,10 +36,10 @@
       <image src="/images/icon/{{isLike ? 'like' : 'like-empty'}}.png" data-method="like"></image>
       <image src="/images/icon/download.png" data-method="download" ></image>
       <view class='song-comment'>     
-        <image src="/images/icon/wechar.png" data-method="chat"></image>
+        <image src="/images/icon/comment.png" data-method="comment"></image>
         <text class='commentCount'>{{commentCount || ''}}</text>
       </view>
-      <image catchtap="showPsong" src="/images/icon/more.png"></image>
+      <image catchtap="showSongList" src="/images/icon/more.png"></image>
     </view>
 
     <view class='player-slider'>
@@ -64,10 +63,10 @@
   </view>
 
   <!-- 呼出菜单 -->
-  <view class="psong-view {{psongshow && 'on'}}">
+  <view class="psong-view {{showSongList && 'on'}}">
     <view class='psong-header'>
       播放列表（{{playerSongs.length}}）
-      <image bindtap="showPsong" src="/images/icon/close-1.png"></image>
+      <image bindtap="showSongList" src="/images/icon/close-1.png"></image>
     </view>
 
     <view class='psong-list'>

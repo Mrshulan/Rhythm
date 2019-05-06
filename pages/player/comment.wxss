@@ -1,42 +1,40 @@
-/* pages/player/chat.wxss */
 .container{}
-.chat-head{
+.comment-head{
   padding: 10px;
   border-bottom: 1px solid #eee;
 }
-.chat-song{
+.comment-song{
   display: flex;
 }
-.chat-song image{
+.comment-song image{
   width: 100px;
   height: 100px;
   border-radius: 5px;
 }
-.chat-song-des{
+.comment-song-des{
   flex: 1;
   padding-left: 12px;
   padding-top: 10px;
   overflow: hidden;
 }
-.chat-song-des text{
+.comment-song-des text{
   display: block;
-  font-size: 16px;
+  font-size: 17px;
 }
-.chat-song-des text:last-child{
+.comment-song-des text:last-child{
   font-size: 14px;
   color: #aeaeae;
 }
-.chat-body{
+.comment-body{
   height: calc(100vh - 161px);
   overflow: hidden;
 }
-.chat-list{
+.comment-list{
   padding: 10px 0;
 }
-.chat-item{
+.comment-item{
   padding: 5px 0 10px 10px;
 }
-
 .user-inline{
   display: flex;
   align-items: center;
@@ -59,7 +57,7 @@
   font-size: 10px;
   color: #aeaeae;
 }
-.chat-info{
+.comment-info{
   margin-left: 35px;
   padding-bottom: 5px;
   padding-right: 5apx;
@@ -72,8 +70,8 @@
   text-align:center;
   font-size:16px;
 }
-
-.chat-form{
+/* 底部评论框 */
+.comment-form{
   position: fixed;
   left: 0;
   right: 0;
@@ -81,7 +79,7 @@
   padding: 5px;
   background: #fff;
 }
-.chat-form button{
+.comment-form button{
   float: right;
   padding: 0 8px;
   height: 30px;
@@ -89,10 +87,10 @@
   font-size: 14px;
   background: transparent;
 }
-.chat-form button::after{
+.comment-form button::after{
   border: none;
 }
-.chat-form input{
+.comment-form input{
   box-sizing: border-box;
   height: 30px;
   padding: 0 8px;

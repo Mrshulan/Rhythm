@@ -1,6 +1,3 @@
-<!--pages/home/index.wxml-->
-<!-- <text>pages/home/index.wxml</text> -->
-
 <!-- 引入模版 -->
 <import src='/template/song/song.wxml' />
 <import src='/template/public/bottom-player.wxml' />
@@ -9,7 +6,6 @@
 <wxs src='../../common/function.wxs' module="common"> </wxs>
 
 <view class='container'>
-
   <!-- 头部 -->
   <view class='header'>
     <navigator class='on' hover-class="on">推荐</navigator>
@@ -30,8 +26,7 @@
       </swiper-item>
     </swiper>
   </view>
-
-  <!-- region地区 -->
+  <!-- 全 球 好 听 -->
   <view class='region-type'>
     <view class='region-type-title'>全 球 好 听</view>
     <view class='region-type-content'>   
@@ -41,7 +36,6 @@
       </navigator>
     </view>
   </view>
-
   <!-- 音乐类型 -->
   <view class='home-menu'>
     <view class='hmenu-item' wx:for='{{sheets}}' wx:key='id' wx:for-item="sheet">
@@ -49,7 +43,6 @@
         <image src='/images/icon/enum.png'></image>
         <text>{{sheet.name}}</text>
       </navigator>
-
       <view class='hmenu-body'>
         <template is='song-list' data='{{...sheet}}' />
       </view>

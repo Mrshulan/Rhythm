@@ -1,3 +1,4 @@
+/* 调试比例31*3 + 3.5*2 */
 .song-view3 .song{
   margin-right: 3.5%;
   width: 31%;

@@ -7,18 +7,18 @@ const audio = AudioManager.audio
 
 const $page = new PageModule({
   data: {
-    psongshow: false
+    showSongList: false
   },
 
   onLoad(){},
   // 显示歌单
-  showPsong() {
-    this.setData({ psongshow: !this.data.psongshow })
+  showSongList() {
+    this.setData({ showSongList: !this.data.showSongList })
   },
   // 删除歌单中的一条数据
   delPlayerSongs(event) {
     const song = event.currentTarget.dataset.song
-    const index = this.data.playerSongs.findIndex(item => item.song)
+    const index = this.data.playerSongs.findIndex(item => item.songmid === song.songmid)
 
     this.data.playerSongs.splice(index, 1)
     

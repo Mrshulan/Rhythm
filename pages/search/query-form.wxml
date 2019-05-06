@@ -1,3 +1,4 @@
+<!-- 公共查询表单 -->
 <template name='query-form'>
   <form class='query-form' bindsubmit='query'>
     <button form-type='submit'>

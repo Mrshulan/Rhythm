@@ -42,8 +42,8 @@ const $page = new PageModule({
   updata() {
     const data = $searchCache_db.all()
     this.setData({ 
-      w: data,
-      keyword: ''
+      w: '',
+      history: data
     })
   }
 })

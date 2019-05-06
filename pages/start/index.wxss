@@ -1,4 +1,3 @@
-/* pages/start/index.wxss */
 page{
   background: #b3d4db;
 }

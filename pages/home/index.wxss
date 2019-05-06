@@ -1,16 +1,14 @@
-/* pages/home/index.wxss */
 /* 样式的载入 */
 @import "/template/song/song.wxss";
 @import "/template/public/bottom-player.wxss";
 
-/* pages/home/index.wxss */
 /* header头部 */
 .header{
   display: flex;
+  justify-content: center;
   padding-bottom: 10px;
   background: #b3d4db;
   color: #fff;
-  justify-content: center;
 }
 .header navigator{
   margin: 0 5px;
@@ -23,7 +21,7 @@
 /* banner */
 .home-banner{
   background: linear-gradient(#b3d4db,#b3d4db)
-               no-repeat left top/ 100% 200rpx;
+               no-repeat left top/ 100% 300rpx;
 }
 .home-banner swiper{
   height: 300rpx;
@@ -65,11 +63,10 @@
   text-align: center;
 }
 
-/* 热门歌曲 */
+/* 歌曲分类 */
 .home-menu{
   margin-top: 25px;
 }
-.hmenu-item{}
 .hmenu-item + .hmenu-item{
   margin-top: 15px;
 }
@@ -84,6 +81,8 @@
 .hmenu-head text{
   vertical-align: bottom;
 }
+
+/* 歌曲图标样式 */
 .hmenu-body{
   padding: 0 10px;
 }

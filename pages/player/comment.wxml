@@ -1,18 +1,17 @@
-<!--pages/player/chat.wxml-->
 <view class='container'>
-
-  <view class='chat-head'>
-    <view class='chat-song'>
+  <!-- 评论头部 -->
+  <view class='comment-head'>
+    <view class='comment-song'>
       <image src="{{song.album_min}}"></image>
-      <view class='chat-songs-des'>
-        <text class='substr'> {{song.songname}}</text>
-        <text> - {{song.singer}}</text>
+      <view class='comment-song-des'>
+        <text class='substr'>{{song.songname}}</text>
+        <text>{{song.singer}}</text>
       </view>
     </view>
   </view>
-
-  <scroll-view class='chat-body' scroll-y bindscrolltolower="moreComments">
-    <view class='chat-item' wx:for="{{commentList}}" wx:key='content'>
+  <!-- 评论主题 -->
+  <scroll-view class='comment-body' scroll-y bindscrolltolower="moreComments">
+    <view class='comment-item' wx:for="{{commentList}}" wx:key='content'>
       <view class='user-inline'>
         <image src="{{item.userInfo.avatarUrl}}"></image>
         <view class='user-des'>
@@ -20,14 +19,14 @@
           <text>{{item.time}}</text>
         </view>
       </view>
-      <view class='chat-info'>
+      <view class='comment-info'>
         {{item.content}}
       </view>      
     </view>
     <view class='attention'>当前暂无更多评论~</view>
   </scroll-view>
 
-  <form class="chat-form" bindsubmit='addComment'>
+  <form class="comment-form" bindsubmit='addComment'>
     <button form-type='submit'>评论</button>
     <input name="content" value="{{content}}" placeholder='留下点什么吧~'/>
   </form>

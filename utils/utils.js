@@ -25,7 +25,6 @@ function getUserInfo() {
 
     wx.getUserInfo({
       success(res) {
-        console.log(res)
         resolve(res.userInfo)
       },
       fail() {

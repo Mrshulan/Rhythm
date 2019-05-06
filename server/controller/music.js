@@ -64,7 +64,7 @@ exports.getTopid = async ctx => {
     params: Object.assign({}, defaultConfig.defaultData, { topid: id })
   }
 
-  const { cur_song_num, songlist, topinfo } = await axios(options)
+  const { cur_song_num, songlist, topinfo } = await axios(options);
 
   ctx.body = {
     statu: 200,

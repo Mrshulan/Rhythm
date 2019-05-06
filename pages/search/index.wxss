@@ -15,10 +15,12 @@
 .history-item image{
   width: 25px;
   height: 25px;
+  vertical-align: bottom;
 }
 .history-item navigator{
   flex: 1;
   padding-bottom: 5px;
   line-height: 25px;
   border-bottom: 1px solid #eee;
+  vertical-align: bottom;
 }

@@ -1,7 +1,9 @@
+<!-- 引入模版 -->
 <import src="/template/song/song.wxml" />
 <import src="/template/public/bottom-player.wxml" />
 
 <view class='container'>
+  <!-- list主体 -->
   <scroll-view class='scroll-songs' scroll-y bindscrolltolower="morePage">
     <view class='scroll-songs-view'>
       <template is='song-list' data='{{songs}}' />

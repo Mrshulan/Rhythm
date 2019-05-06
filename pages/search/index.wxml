@@ -1,15 +1,15 @@
 <!-- 引入模板 -->
 <import src="query-form.wxml" />
 <import src="/template/public/bottom-player.wxml" />
-<!-- 引入模板 -->
 
 <view class='container'>
+  <!-- 表单头部  -->
   <template is='query-form' data='{{keyword}}'/>
-
+  <!-- 历史列表主题 -->
   <view class='search-history'>
     <view class='history-item' wx:for="{{history}}" wx:key='name'>
       <image src='/images/icon/history.png'></image>
-      <navigator url='list?q={{item.name}}' hover-class="none" class="substr" > {{item.keyword}}</navigator>
+      <navigator url='list?w={{item.keyword}}' hover-class="none" class="substr" > {{item.keyword}}</navigator>
       <image src="/images/icon/close.png" data-song="{{item.keyword}}" bindtap="del"> </image>
     </view>
   </view>
