@@ -1,8 +1,7 @@
-/* 只能写es5 */
+/* 只能写es5 在webview层做简单的数据处理 免去线程数据交换 */
 
-//返回一个歌单的跳转url
+// 返回一个歌单的跳转url
 function deSheetUrl(sheet) {
-
   return "/pages/sheet/list?id=" + sheet.id + "&name=" + sheet.name;
 }
 

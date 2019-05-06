@@ -1,15 +1,10 @@
-import AppModule from "./lib/App.js";
-import { envStr, envObj } from "./common/const.js";
+import AppModule from "./lib/App.js"
+import { envStr, envObj } from "./common/const.js"
 
 // 初始化云开发功能
 wx.cloud.init({ env: envStr })
 
-const $app = new AppModule();
+const $app = new AppModule()
 
-$app.addEvent("onLaunch", function () {
-
-
-})
-
-$app.start();
-// app -> page
+// 此时里边App方法就管用了
+$app.start()

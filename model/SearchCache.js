@@ -1,16 +1,16 @@
 import Storage from '../lib/Storage.js'
 
-const dbname = 'search_song'
+const dbname = 'searchCache_db'
 
-export default class SearchSong extends Storage {
+export default class SearchCache extends Storage {
   constructor() {
     super(dbname)
   }
 
-  add(songName) {
-    if(!this.where('name', songName).find()) {
+  add(keyword) {
+    if(!this.where('keyword', keyword).find()) {
       super.add({
-        name: songName,
+        keyword,
         time: new Date().getTime()
       }).save()
     }
@@ -18,22 +18,18 @@ export default class SearchSong extends Storage {
 
   all() {
     this.order('time', 'desc')
-
     const db = super.all()
-
     const data = db.splice(0, 10)
-
-    db.forEach(songItem => {
-      this.del(songItem.name)
+    // 第十条之后就都删除
+    db.forEach(item => {
+      this.del(item.keyword)
     })
 
     return data
   }
 
-
-  del(songName) {
-    this.where('name', songName)
-
+  del(keyword) {
+    this.where('keyword', keyword)
     super.del().save()
   }
 }

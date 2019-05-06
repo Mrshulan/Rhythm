@@ -99,7 +99,7 @@ const $page = new PageModule({
   onError() {
     wx.showToast({
       icon: 'none',
-      title: '歌曲链接发生错误,请尝试使用qq音乐客户端播放~'
+      title: '由于版权问题,请尝试使用qq音乐客户端播放~'
     })
   },
   // 播放结束,切换下一首

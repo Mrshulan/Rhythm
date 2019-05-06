@@ -4,7 +4,7 @@ import { request } from '../common/const.js'
 export default class Banner {
 
   constructor(page) {
-    // 监听广告图的动作信息
+    // 挂载到页面实例上
     Reflect.set(page, 'actionBanner', Banner.actionBanner)
   }
 

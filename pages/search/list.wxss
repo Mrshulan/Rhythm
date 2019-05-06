@@ -9,5 +9,3 @@
 .scroll-songs-view{
   padding: 10px;
 }
-
-/* pages/search/list.wxss */

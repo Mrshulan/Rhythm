@@ -1,7 +1,7 @@
 import pageModule from '../../lib/Page.js'
-import $pagemusic from '../../model/PageMusic.js'
+import $AudioPlayer from '../../model/AudioPlayer.js'
 import AudioManager from "../../lib/AudioManager.js"
-import LikeSong from "../../model/LikeSong.js"
+import FavoriteCache from "../../model/FavoriteCache.js"
 import { request } from "../../common/const.js"
 
 const audio = AudioManager.audio
@@ -11,7 +11,7 @@ const db = wx.cloud.database()
 const Comments = db.collection('Comments')
 
 // 拿到收藏歌单的本地储存
-const $like_db = new LikeSong();
+const $favoriteCache_db = new FavoriteCache();
 
 const $page = new pageModule({
   // 加载
@@ -22,7 +22,7 @@ const $page = new pageModule({
 
     //收藏状态
     this.setData({
-      like: $like_db.has(o.mid)
+      isLike: $favoriteCache_db.has(o.mid)
     });
 
     this.getLyrics(o.mid)
@@ -109,7 +109,7 @@ const $page = new pageModule({
     });
     // 收藏状态
     this.setData({
-      like: $like_db.has(this.data.playerSong.songmid)
+      isLike: $favoriteCache_db.has(this.data.playerSong.songmid)
     });
     // 评论个数
     this.getCommentCount(this.data.playerSong.songmid)
@@ -118,6 +118,6 @@ const $page = new pageModule({
   }
 })
 
-$page.extend($pagemusic)
+$page.extend($AudioPlayer)
 
 $page.start()

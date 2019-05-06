@@ -1,56 +1,53 @@
 import PageModule from "../../lib/Page.js";
-import SearchSong from "../../model/SearchSong.js";
-import $pagemusic from "../../model/PageMusic.js";
+import SearchCache from "../../model/SearchCache.js"
+import $AudioPlayer from "../../model/AudioPlayer.js"
 
-
-const $search_song = new SearchSong()
+const $searchCache_db = new SearchCache()
 
 const $page = new PageModule({
   data: {
-    q: '',
+    w: '',
     history: []
   },
-
+  // 每次显示都需要更新
   onShow() {
     this.updata()
   },
 
   query(event) {
-    const q = event.detail.value.q.trim()
-
-    if(!q) {
+    const keyword = event.detail.value.keyword.trim()
+    if (!keyword) {
       return wx.showToast({
         icon: "none",
-        title: "走点心,不要全都输入空格"
+        title: "啥也没有输入！"
       });
     }
 
-    //保存数据到本地数据库
-    $search_song.add(q);
+    $searchCache_db.add(keyword)
 
     this.updata()
 
     wx.navigateTo({
-      url: 'list?q=' + q,
+      url: 'list?w=' + keyword,
     })
   },
 
   del(event) {
-    const songName = event.currentTarget.dataset.song
+    const keyword = event.currentTarget.dataset.keyword
     
-    $search_song.del(songName);
+    $searchCache_db.del(keyword)
     this.updata()
   },
 
   updata() {
-    const data = $search_song.all()
+    const data = $searchCache_db.all()
     this.setData({ 
-      history: data,
-      q: ''
+      w: data,
+      keyword: ''
     })
   }
 })
 
-$page.extend($pagemusic);
+$page.extend($AudioPlayer);
 
 $page.start();

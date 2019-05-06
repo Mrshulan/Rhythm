@@ -1,32 +1,32 @@
 import pageModule from '../../lib/Page.js'
 import Banner from '../../model/Banner.js'
+import $AudioPlayer from "../../model/AudioPlayer.js"
 import { region, sheet, request } from '../../common/const.js'
-import $pagemusic from "../../model/PageMusic.js";
 
 // 页面的命名空间
 const $namespace = 'home/index'
 
 // 实例page模型
 const $page = new pageModule({
-  onLoad(o) {
-    // 加载banner图信息
+  onLoad() {
+    // 头部
     const banner = new Banner(this)
     banner.getBanner().then(res => {
-      console.log(res.data)
-      this.setData({ banner: res.data.slider })    
+      this.setData({ 
+        banner: res.data.slider,
+        region // 设置全球好听列表
+      })    
     })
-    // 设置国家地区信息
-    this.setData({ region })
-    // 获取歌单信息
-    this.getSheet()
-      .findNameSpace($namespace)
-      .then(this.setSheet.bind(this))
 
+    // 获取歌单信息 实例上的getSheet()已经变成了事件触发器了 (这里的{}只是用来extend的)
+    this.getSheet()
+      .findNameSpace($namespace) // 首页专属data 不然和default混合了
+      .then(this.setSheet.bind(this))
   },
   // 获取歌单信息
   getSheet() {
-    const sheetPromise = []
-    // 循环歌单请求
+    const sheetPromises = []
+    // 循环歌单请求包装
     sheet.forEach(item => {
       const p = new Promise((resolve) => {
         const url = request.topid + "?id=" + item.id
@@ -35,32 +35,29 @@ const $page = new pageModule({
           success: resolve
         })
       })
-
-      sheetPromise.push(p)
+      sheetPromises.push(p)
     })
 
     return {
       nameSpace: $namespace,
-      data: Promise.all(sheetPromise)
+      data: Promise.all(sheetPromises)
     }
   },
   // 设置歌单信息
   setSheet(arg) {
-    console.log(arg)
+    // then过来的 首页需要的歌单信息数组 
     const sheetData = []
-
     arg.forEach((res, key) => {
       sheetData.push(Object.assign({
         songs: res.data.songList
       }, sheet[key]))
     })
-
     this.setData({ sheets: sheetData })
   }
 })
 
-//继承公共的音乐模块
-$page.extend($pagemusic);
+// 继承AudioPlayer的事件和属性
+$page.extend($AudioPlayer);
 
 //调用page
 $page.start();

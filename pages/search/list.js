@@ -1,36 +1,32 @@
-import PageModule from "../../lib/Page.js";
-import { request } from "../../common/const.js";
-import $pageList from "../../model/PageList.js";
-import $pagemusic from "../../model/PageMusic.js";
-import SearchSong from "../../model/SearchSong.js";
+import PageModule from "../../lib/Page.js"
+import $SongList from "../../model/SongList.js"
+import $AudioPlayer from "../../model/AudioPlayer.js"
+import SearchCache from "../../model/SearchCache.js"
+import { request } from "../../common/const.js"
 
-
-const $search_song = new SearchSong()
-const $page = new PageModule($pageList)
-
-$page.extend($pagemusic);
-
+const $searchCache_db = new SearchCache()
+// pageModule实例
+const $page = new PageModule($SongList)
+$page.extend($AudioPlayer)
 
 $page.start({
   onLoad(query) {
-    const songName = query.q
-
-    this.data.url = request.search + '?w=' + songName;
+    const keyword = query.w
+    this.data.url = request.search + '?w=' + keyword;
 
     wx.setNavigationBarTitle({
-      title: songName
+      title: keyword
     })
 
-    this.setData({ q: songName })
+    this.setData({ w: keyword })
 
-    this.loadPage()
+    this.loadData()
   },
 
   query(event) {
-    const data = event.detail.value
-
-    $search_song.add(data.q)
-
-    this.onLoad(data)
+    const { keyword } = event.detail.value
+    $searchCache_db.add(keyword)
+    // 重新加载
+    this.onLoad({w: keyword})
   }
 })

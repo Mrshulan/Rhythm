@@ -7,7 +7,7 @@
 <!--pages/sheet/list.wxml-->
 <view class="container">
 
-  <template is="query-form" data="{{q}}" />
+  <template is="query-form" data="{{w}}" />
 
   <scroll-view class="scroll-songs" scroll-y bindscrolltolower="morePage">
     <view class="scroll-songs-view">

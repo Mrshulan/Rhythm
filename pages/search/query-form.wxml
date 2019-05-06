@@ -3,6 +3,6 @@
     <button form-type='submit'>
       <image src="/images/icon/search.png"></image>
     </button>
-    <input name='q' value='{{q}}' />
+    <input name='keyword' value='{{w}}' />
   </form>
 </template>

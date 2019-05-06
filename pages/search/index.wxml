@@ -4,13 +4,13 @@
 <!-- 引入模板 -->
 
 <view class='container'>
-  <template is='query-form' data='{{q}}'/>
+  <template is='query-form' data='{{keyword}}'/>
 
   <view class='search-history'>
     <view class='history-item' wx:for="{{history}}" wx:key='name'>
       <image src='/images/icon/history.png'></image>
-      <navigator url='list?q={{item.name}}' hover-class="none" class="substr" > {{item.name}}</navigator>
-      <image src="/images/icon/close.png" data-song="{{item.name}}" bindtap="del"> </image>
+      <navigator url='list?q={{item.name}}' hover-class="none" class="substr" > {{item.keyword}}</navigator>
+      <image src="/images/icon/close.png" data-song="{{item.keyword}}" bindtap="del"> </image>
     </view>
   </view>
 </view>

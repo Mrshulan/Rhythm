@@ -5,8 +5,8 @@
     "pages/search/list",
     "pages/sheet/list",
     "pages/player/index",
-    "pages/player/chat",
-    "pages/like/index",
+    "pages/player/comment",
+    "pages/favorite/index",
     "pages/start/index"
   ],
   "window": {
@@ -17,5 +17,6 @@
   },
   "requiredBackgroundModes": [
     "audio"
-  ]
+  ],
+  "sitemapLocation": "sitemap.json"
 }

@@ -4,8 +4,7 @@ import { request } from '../common/const.js'
 const $page = new PageModule({
   // 加载事件
   onLoad() {
-
-      Object.assign(this.data, {
+    Object.assign(this.data, {
       url: '',
       page: 1,
       row: 18,
@@ -14,7 +13,7 @@ const $page = new PageModule({
     })
   },
   // 加载数据
-  loadPage() {
+  loadData() {
     if(this.data.stock === false) {
       return wx.showToast({
         icon: 'none',
@@ -38,13 +37,11 @@ const $page = new PageModule({
   },
   // 处理数据
   codePage(res) {
-    // 请求拿到的数据
     const data = res.data
-    console.log(res.data)
     // 隐藏加载图标
     wx.hideLoading()
 
-    // 更新歌单 判断是否加载完毕
+    // 更新歌单 判断是否加载完毕(在loadData判断弹出)
     this.data.songs.push(...data.songList)
     this.data.stock = this.data.page < data.count_page
     // 更新数据
@@ -56,10 +53,9 @@ const $page = new PageModule({
   // 加载更多
   morePage() {
     this.data.page++
-
-    this.loadPage()
+    this.loadData()
   },
-
+  // 加载图片出错
   imgLoadError(event) {
     let imgUrl = "/images/default_album.jpg"
     let song = event.target.dataset.song

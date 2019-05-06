@@ -2,7 +2,7 @@ import PageModule from "../../lib/Page.js"
 import Storage from "../../lib/Storage.js"
 import utlis from "../../utils/utils.js"
 
-const $app = getApp().example
+const $app = getApp().appMouduleInstance
 const $user_db = new Storage('user_db')
 
 const $page = new PageModule({

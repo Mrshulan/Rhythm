@@ -4,14 +4,6 @@
 
   <!-- 背景图 -->
   <image class='player-bg' src='{{playerSong.album_big}}'></image>
-  <!-- 歌曲切换视图
-  <view class='player-tab'>
-    <swiper class='player-swiper'>
-      <swiper-item>
-        <image src="{{playerSong.album_big}}"></image>
-      </swiper-item>
-    </swiper>
-  </view> -->
 
   <view class='player-tab'>
     <swiper class="player-swiper">
@@ -42,7 +34,7 @@
   <!-- 底部菜单 -->
   <view class='player-bottom'>
     <view class='player-menu'  bindtap="musicTap">
-      <image src="/images/icon/{{like ? 'like' : 'like-empty'}}.png" data-method="like"></image>
+      <image src="/images/icon/{{isLike ? 'like' : 'like-empty'}}.png" data-method="like"></image>
       <image src="/images/icon/download.png" data-method="download" ></image>
       <view class='song-comment'>     
         <image src="/images/icon/wechar.png" data-method="chat"></image>
@@ -79,7 +71,7 @@
     </view>
 
     <view class='psong-list'>
-      <view class='psong-item'  wx:for="{{playerSongs}}" wx:key='song_mid'>
+      <view class='psong-item'  bindtap='onPlayer' data-songs='{{playerSongs}}' wx:for="{{playerSongs}}" wx:key='songmid'>
         <view class='substr' data-song="{{item}}">
           {{item.songname}}
           <text data-song="{{item}}">- {{item.singer}}</text>

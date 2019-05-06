@@ -5,7 +5,7 @@ function objDeUCode(obj) {
 }
 
 function getUserInfo() {
-  const $app = getApp().example
+  const $app = getApp().appMouduleInstance
 
   return new Promise((resolve, reject) => {
     let userInfo = $app.data('userInfo')
