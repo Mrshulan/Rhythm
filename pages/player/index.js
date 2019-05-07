@@ -22,7 +22,8 @@ const $page = new pageModule({
 
     //收藏状态
     this.setData({
-      isLike: $favoriteCache_db.has(o.mid)
+      initduration: 153,
+      isLike: $favoriteCache_db.has(o.mid),
     });
 
     this.getLyrics(o.mid)
@@ -57,19 +58,20 @@ const $page = new pageModule({
     }).then(res => {
       let lyrics = res.data.lyric
 
-      if (lyrics === undefined) {
+      if (lyrics.length === 0) {
         lyrics = [{
           milisecond: 0,
           second: 0,
           date: "00:00.00", 
           text: "暂时无歌词"
         }]
-      } else if (lyrics.length === 1) {
+      } else if (lyrics.length <= 2) {
         this.setData({ multiple: 1 })      
       } else {
         this.setData({ multiple: 8 })
       }
-      this.setData({lyrics})
+      
+      this.setData({ lyrics })
     })
   },
   // 设置进度条
@@ -100,7 +102,7 @@ const $page = new pageModule({
     this.setData({ current, currentIndex })  
   },
   
-  //每次切换歌曲都会触发准备就绪的回调函数
+  // 每次切换歌曲都会触发准备就绪的回调函数
   onCanplay() {
     // console.log('下一首链接请求成功之后')
     // 设置导航标题

@@ -29,7 +29,7 @@ const $page = new PageModule({
 
   // 事件委托
   musicTap(event) {
-    //需要触发的方法
+    // 需要触发的方法
     const method = event.target.dataset.method
     // AudioManager的static方法 songTab play 这些
     Reflect.has(AudioManager, method) && Reflect.apply(AudioManager[method], this, [event])

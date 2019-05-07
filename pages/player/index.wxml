@@ -18,7 +18,6 @@
           <view class='player-lyric'>
             <swiper vertical
                 display-multiple-items="{{multiple}}"
-                duration="{{duration}}"
                 current="{{current}}"
               >
               <swiper-item wx:for="{{lyrics}}" wx:key="millisecond" class="{{index === currentIndex && 'on'}}">
@@ -52,7 +51,7 @@
         max="{{~~playerSong.duration || 0}}"
         bindchange="setSeek"
        />
-      <text>{{common.toSongTime(playerSong.duration)}}</text>
+      <text>{{common.toSongTime(playerSong.duration || initduration)}}</text>
     </view>
 
     <view class="player-menu player-btn" bindtap="musicTap">
