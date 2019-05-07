@@ -3,6 +3,8 @@ const Music = require('../controller/music')
 
 const router = new Router()
 
+router.prefix('/musicapi')
+
 router.get('/', async ctx => {
   ctx.body = '音乐接口'
 })

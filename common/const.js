@@ -16,7 +16,7 @@ export const sheet = [
 
 //请求接口
 export const request = {
-  host: "http://127.0.0.1:3000/"
+  host: "http://mrshulan.xin/musicapi/"
 }
 request.songurl = request.host + 'getSongUrl/' // 歌曲真实地址
 request.recommend = request.host + 'getRecommend' // 首页推荐
